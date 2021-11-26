@@ -8,7 +8,7 @@ import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
 class SharedFragmentViewModelFactory(private val app: Application, private val repository: FoodRepository) :
     ViewModelProvider.AndroidViewModelFactory(app) {
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(SharedFragmentViewModel::class.java)) {
             //Log.d("VTSEN","creating")
             //val tmp = MainFragmentViewModel(app, repository) as T
