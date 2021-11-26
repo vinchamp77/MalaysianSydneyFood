@@ -1,9 +1,6 @@
 package com.androidcafe.malaysiansydneyfood.util
 
-import android.graphics.drawable.Drawable
-import android.os.Build
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.androidcafe.malaysiansydneyfood.R

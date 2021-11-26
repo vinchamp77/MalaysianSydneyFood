@@ -1,6 +1,6 @@
 package com.androidcafe.malaysiansydneyfood.viewmodel
 
-import android.graphics.drawable.Drawable
+import com.androidcafe.malaysiansydneyfood.model.FoodEntity
 
 data class CardData (
     val id : Int,
@@ -11,3 +11,22 @@ data class CardData (
     val mapUrl : String,
     var favorite : Boolean?,
 )
+
+fun CardData.asFoodEntity(toggleFavorite: Boolean = false): FoodEntity {
+
+    var modifiedFavorite = favorite
+
+    if(toggleFavorite) {
+        modifiedFavorite = favorite != true
+    }
+
+    return FoodEntity(
+        id = id,
+        title = title,
+        rating = rating,
+        description = description,
+        imageUrl = imageUrl,
+        mapUrl = mapUrl,
+        favorite = modifiedFavorite,
+    )
+}

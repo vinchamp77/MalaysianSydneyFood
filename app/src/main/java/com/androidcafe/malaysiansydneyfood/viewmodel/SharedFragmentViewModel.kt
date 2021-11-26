@@ -4,10 +4,8 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.androidcafe.malaysiansydneyfood.BuildConfig
 import com.androidcafe.malaysiansydneyfood.R
+import com.androidcafe.malaysiansydneyfood.model.asCardDataList
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
-import com.androidcafe.malaysiansydneyfood.util.asCardDataList
-import com.androidcafe.malaysiansydneyfood.util.asFoodEntity
-import kotlinx.coroutines.launch
 
 class SharedFragmentViewModel(
     private val app: Application,
@@ -33,10 +31,6 @@ class SharedFragmentViewModel(
 
     init {
         if (debug) SetupMockUpData(false)
-
-        else {
-            //refreshAllData()
-        }
     }
 
     suspend fun refreshAllData() {

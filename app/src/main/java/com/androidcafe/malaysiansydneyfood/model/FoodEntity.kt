@@ -2,6 +2,7 @@ package com.androidcafe.malaysiansydneyfood.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.androidcafe.malaysiansydneyfood.viewmodel.CardData
 
 @Entity (tableName = "food")
 data class FoodEntity (
@@ -13,3 +14,17 @@ data class FoodEntity (
     val mapUrl : String,
     val favorite : Boolean?
 )
+
+fun List<FoodEntity>.asCardDataList(): List<CardData> {
+    return map {
+        CardData(
+            id = it.id,
+            title = it.title,
+            rating = it.rating,
+            description = it.description,
+            imageUrl = it.imageUrl,
+            mapUrl = it.mapUrl,
+            favorite = it.favorite,
+        )
+    }
+}
