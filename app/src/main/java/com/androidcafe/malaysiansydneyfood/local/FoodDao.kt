@@ -1,6 +1,5 @@
-package com.androidcafe.malaysiansydneyfood.model
+package com.androidcafe.malaysiansydneyfood.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Update

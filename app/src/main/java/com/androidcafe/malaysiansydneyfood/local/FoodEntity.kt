@@ -1,4 +1,4 @@
-package com.androidcafe.malaysiansydneyfood.model
+package com.androidcafe.malaysiansydneyfood.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

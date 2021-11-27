@@ -1,8 +1,8 @@
 package com.androidcafe.malaysiansydneyfood.repository
 
 import androidx.lifecycle.asLiveData
-import com.androidcafe.malaysiansydneyfood.model.FoodDao
-import com.androidcafe.malaysiansydneyfood.model.FoodEntity
+import com.androidcafe.malaysiansydneyfood.local.FoodDao
+import com.androidcafe.malaysiansydneyfood.local.FoodEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext

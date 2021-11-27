@@ -1,6 +1,6 @@
 package com.androidcafe.malaysiansydneyfood.viewmodel
 
-import com.androidcafe.malaysiansydneyfood.model.FoodEntity
+import com.androidcafe.malaysiansydneyfood.local.FoodEntity
 
 data class CardData (
     val id : Int,

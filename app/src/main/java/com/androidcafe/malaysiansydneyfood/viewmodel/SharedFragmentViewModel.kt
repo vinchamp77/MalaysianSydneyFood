@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.androidcafe.malaysiansydneyfood.BuildConfig
 import com.androidcafe.malaysiansydneyfood.R
-import com.androidcafe.malaysiansydneyfood.model.asCardDataList
+import com.androidcafe.malaysiansydneyfood.local.asCardDataList
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
 
 class SharedFragmentViewModel(

@@ -1,4 +1,4 @@
-package com.androidcafe.malaysiansydneyfood.model
+package com.androidcafe.malaysiansydneyfood.local
 
 import android.content.Context
 import androidx.room.Database

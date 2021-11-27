@@ -1,15 +1,14 @@
 package com.androidcafe.malaysiansydneyfood.ui
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import com.androidcafe.malaysiansydneyfood.BuildConfig
-import com.androidcafe.malaysiansydneyfood.databinding.MainFragmentBinding
 import com.androidcafe.malaysiansydneyfood.databinding.SearchResultFragmentBinding
-import com.androidcafe.malaysiansydneyfood.model.FoodDatabase
+import com.androidcafe.malaysiansydneyfood.local.FoodDatabase
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModel
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModelFactory

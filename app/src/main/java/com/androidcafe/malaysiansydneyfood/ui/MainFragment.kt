@@ -8,7 +8,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.databinding.MainFragmentBinding
-import com.androidcafe.malaysiansydneyfood.model.FoodDatabase
+import com.androidcafe.malaysiansydneyfood.local.FoodDatabase
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModel
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModelFactory
