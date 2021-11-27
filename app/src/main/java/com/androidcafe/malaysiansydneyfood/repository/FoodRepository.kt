@@ -1,13 +1,13 @@
 package com.androidcafe.malaysiansydneyfood.repository
 
 import androidx.lifecycle.asLiveData
-import com.androidcafe.malaysiansydneyfood.local.FoodDao
+import com.androidcafe.malaysiansydneyfood.local.IFoodDao
 import com.androidcafe.malaysiansydneyfood.local.FoodEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
-class FoodRepository (private val dao: FoodDao) {
+class FoodRepository (private val dao: IFoodDao) {
 
     val foodEntityList = dao.getAll().asLiveData()
 

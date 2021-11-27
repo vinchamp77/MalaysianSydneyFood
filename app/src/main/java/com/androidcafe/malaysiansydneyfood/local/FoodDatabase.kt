@@ -11,7 +11,8 @@ import androidx.room.RoomDatabase
     exportSchema = true)
     //autoMigrations = [AutoMigration (from = 1, to = 2)])
 abstract class FoodDatabase : RoomDatabase() {
-    abstract fun foodDao(): FoodDao
+
+    abstract val dao: IFoodDao
 
     companion object {
         @Volatile

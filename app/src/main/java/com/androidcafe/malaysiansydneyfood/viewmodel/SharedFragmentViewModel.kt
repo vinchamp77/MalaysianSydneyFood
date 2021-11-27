@@ -11,7 +11,7 @@ class SharedFragmentViewModel(
     private val app: Application,
     private val repository: FoodRepository) : AndroidViewModel(app) {
 
-    val allCardDataList = Transformations.map(repository.foodEntityList) {
+    val allCardDataList: LiveData<List<CardData>> = Transformations.map(repository.foodEntityList) {
         it.asCardDataList()
     }
 

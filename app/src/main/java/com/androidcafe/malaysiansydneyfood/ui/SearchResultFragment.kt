@@ -18,7 +18,7 @@ class SearchResultFragment : Fragment() {
 
     private val viewModel: SharedFragmentViewModel by activityViewModels {
         val database = FoodDatabase.getInstance(requireContext())
-        val repository = FoodRepository(database.foodDao())
+        val repository = FoodRepository(database.dao)
 
         SharedFragmentViewModelFactory(requireActivity().application, repository)
     }

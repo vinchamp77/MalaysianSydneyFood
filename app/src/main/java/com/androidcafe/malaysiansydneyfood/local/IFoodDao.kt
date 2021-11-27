@@ -6,7 +6,7 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface FoodDao {
+interface IFoodDao {
     @Query("SELECT * FROM food")
     fun getAll(): Flow<List<FoodEntity>>
 
