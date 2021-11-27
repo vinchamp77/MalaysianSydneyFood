@@ -1,7 +1,6 @@
 package com.androidcafe.malaysiansydneyfood.model
 
 import android.content.Context
-import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -26,9 +25,9 @@ abstract class FoodDatabase : RoomDatabase() {
                         FoodDatabase::class.java,
                         "food_internal.db") // name needs to be different than food.db
                             .createFromAsset("database/food.db")
+                            //commented out because it overwrites the previous saved data
                             //.fallbackToDestructiveMigration()
                             .build()
-                    //INSTANCE = builder.build()
 
                 }
                 return INSTANCE

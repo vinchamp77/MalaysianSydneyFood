@@ -11,8 +11,9 @@ class SharedFragmentViewModel(
     private val app: Application,
     private val repository: FoodRepository) : AndroidViewModel(app) {
 
-    private var _allCardDataList: LiveData<List<CardData>>? = null
-    val allCardDataList: LiveData<List<CardData>>? get() = _allCardDataList
+    val allCardDataList = Transformations.map(repository.foodEntityList) {
+        it.asCardDataList()
+    }
 
     private var _searchTitle: String? = null
     val searchTitle: String? get() = _searchTitle
@@ -28,17 +29,13 @@ class SharedFragmentViewModel(
     }
 
     private val debug = false
+    private var _mockAllCardDataList: LiveData<List<CardData>>? = null
+    val mockAllCardDataList: LiveData<List<CardData>>? get() = _mockAllCardDataList
 
     init {
         if (debug) SetupMockUpData(false)
     }
 
-    suspend fun refreshAllData() {
-        val foodEntityListLiveData = repository.getAll().asLiveData()
-        _allCardDataList = Transformations.map(foodEntityListLiveData) {
-            it.asCardDataList()
-        }
-    }
 
     suspend fun refreshSearchResultData() {
         val foodEntityListLiveData = repository.getByTitle(searchTitle!!).asLiveData()
@@ -63,7 +60,7 @@ class SharedFragmentViewModel(
         val foodEntity = cardData.asFoodEntity(toggleFavorite = true)
         repository.update(foodEntity)
 
-        for(data in allCardDataList?.value!!) {
+        for(data in allCardDataList.value!!) {
 
             if(data.id == cardData.id) {
                 data.favorite = foodEntity.favorite
@@ -93,7 +90,7 @@ class SharedFragmentViewModel(
         if(searchResult) {
             _searchResultCardDataList = _cardDataList
         } else {
-            _allCardDataList = _cardDataList
+            _mockAllCardDataList = _cardDataList
         }
     }
 

@@ -5,7 +5,6 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.databinding.MainFragmentBinding
@@ -13,7 +12,6 @@ import com.androidcafe.malaysiansydneyfood.model.FoodDatabase
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModel
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModelFactory
-import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
@@ -37,11 +35,6 @@ class MainFragment : Fragment() {
         binding.recyclerView.adapter = CardRecycleViewAdapter(viewModel)
 
         setHasOptionsMenu(true)
-
-        lifecycleScope.launch {
-            viewModel.refreshAllData()
-            binding.invalidateAll()
-        }
 
         return binding.root
     }
