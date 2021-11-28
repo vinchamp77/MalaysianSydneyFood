@@ -26,7 +26,7 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
         val uri = Uri.parse(cardData.mapUrl)
         val intent = Intent(Intent.ACTION_VIEW, uri)
 
-        // Note: intent.resolveActivity no longer works in Android 11 due to package visiblity
+        // Note: intent.resolveActivity no longer works in Android 11 due to package visibility
         try {
             intent.setPackage("com.google.android.apps.maps")
             itemView.context.startActivity(intent)
@@ -48,7 +48,11 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
 
     fun onFavoriteClick(cardData: CardData) {
 
-        cardData.favorite = !cardData.favorite!!
+        if (cardData.favorite == null) {
+            cardData.favorite = true
+        } else {
+            cardData.favorite = !cardData.favorite!!
+        }
         viewModel.update(cardData)
         binding.cardData = cardData
     }
