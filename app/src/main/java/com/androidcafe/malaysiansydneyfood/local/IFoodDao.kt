@@ -11,7 +11,7 @@ interface IFoodDao {
     fun getAll(): Flow<List<FoodEntity>>
 
     @Query("SELECT * FROM food WHERE title = :titleToQuery")
-    fun getByTitle(titleToQuery: String): Flow<List<FoodEntity>>
+    fun getByTitle(titleToQuery: String): List<FoodEntity>
 
     @Query("SELECT * FROM food WHERE favorite = 1")
     fun getByFavorite(): Flow<List<FoodEntity>>

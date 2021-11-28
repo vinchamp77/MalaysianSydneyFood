@@ -6,6 +6,7 @@ import com.androidcafe.malaysiansydneyfood.BuildConfig
 import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.local.asCardDataList
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
+import kotlinx.coroutines.launch
 
 class SharedFragmentViewModel(
     private val app: Application,
@@ -18,11 +19,13 @@ class SharedFragmentViewModel(
     private var _searchTitle: String? = null
     val searchTitle: String? get() = _searchTitle
 
-    private var _searchResultCardDataList: LiveData<List<CardData>>? = null
-    val searchResultCardDataList: LiveData<List<CardData>>? get() = _searchResultCardDataList
+    private val _searchResultCardDataList = MutableLiveData<List<CardData>>()
+    val searchResultCardDataList: LiveData<List<CardData>>
+        get() = _searchResultCardDataList
 
     private var _favoriteCardDataList: LiveData<List<CardData>>? = null
-    val favoriteCardDataList: LiveData<List<CardData>>? get() = _favoriteCardDataList
+    val favoriteCardDataList: LiveData<List<CardData>>?
+        get() = _favoriteCardDataList
 
     val aboutText: String by lazy {
         app.resources.getString(R.string.about_text, BuildConfig.VERSION_NAME)
@@ -33,15 +36,40 @@ class SharedFragmentViewModel(
     val mockAllCardDataList: LiveData<List<CardData>>? get() = _mockAllCardDataList
 
     init {
-        if (debug) SetupMockUpData(false)
+        if (debug) setupMockUpData(false)
     }
 
+    private fun setupMockUpData(searchResult: Boolean) {
 
-    suspend fun refreshSearchResultData() {
-        val foodEntityListLiveData = repository.getByTitle(searchTitle!!).asLiveData()
+        val _cardDataListLiveData = MutableLiveData<List<CardData>>()
 
-        _searchResultCardDataList = Transformations.map(foodEntityListLiveData) {
-            it.asCardDataList()
+        _cardDataListLiveData.value = mutableListOf(
+            CardData(
+                0,
+                "Mamak",
+                4f,
+                "Buzzing Malaysian restaurant serving satay, noodles and desserts like sweet roti at shared tables.",
+                "https://mamak.com.au/images/content/_max/haymarket-shop.jpg",
+                "https://goo.gl/maps/RJDrEzw4agb9bGkE7",
+                false,
+            ),
+        )
+        if(searchResult) {
+            _searchResultCardDataList.value = _cardDataListLiveData.value
+        } else {
+            _mockAllCardDataList = _cardDataListLiveData
+        }
+    }
+
+    fun setSearchTitle(title: String?) {
+        _searchTitle = title
+    }
+
+    fun refreshSearchResultData() {
+        viewModelScope.launch {
+            val foodEntityList = repository.getByTitle(searchTitle!!)
+            val cardDataList = foodEntityList.asCardDataList()
+            _searchResultCardDataList.postValue(cardDataList)
         }
     }
 
@@ -50,10 +78,6 @@ class SharedFragmentViewModel(
         _favoriteCardDataList = Transformations.map(foodEntityListLiveData) {
             it.asCardDataList()
         }
-    }
-
-    fun setSearchTitle(title: String?) {
-        _searchTitle = title
     }
 
     suspend fun update(cardData: CardData)  {
@@ -69,29 +93,5 @@ class SharedFragmentViewModel(
         }
 
         cardData.favorite = foodEntity.favorite
-
     }
-
-    private fun SetupMockUpData(searchResult: Boolean) {
-
-        val _cardDataList = MutableLiveData<List<CardData>>()
-
-        _cardDataList.value = mutableListOf(
-            CardData(
-                0,
-                "Mamak",
-                4f,
-                "Buzzing Malaysian restaurant serving satay, noodles and desserts like sweet roti at shared tables.",
-                "https://mamak.com.au/images/content/_max/haymarket-shop.jpg",
-                "https://goo.gl/maps/RJDrEzw4agb9bGkE7",
-                false,
-            ),
-        )
-        if(searchResult) {
-            _searchResultCardDataList = _cardDataList
-        } else {
-            _mockAllCardDataList = _cardDataList
-        }
-    }
-
 }
