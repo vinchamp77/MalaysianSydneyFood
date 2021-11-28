@@ -80,18 +80,10 @@ class SharedFragmentViewModel(
         }
     }
 
-    suspend fun update(cardData: CardData)  {
-        val foodEntity = cardData.asFoodEntity(toggleFavorite = true)
-        repository.update(foodEntity)
-
-        for(data in allCardDataList.value!!) {
-
-            if(data.id == cardData.id) {
-                data.favorite = foodEntity.favorite
-                //break
-            }
+    fun update(cardData: CardData) {
+        viewModelScope.launch {
+            val foodEntity = cardData.asFoodEntity()
+            repository.update(foodEntity)
         }
-
-        cardData.favorite = foodEntity.favorite
     }
 }

@@ -1,26 +1,13 @@
 package com.androidcafe.malaysiansydneyfood.ui
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.androidcafe.malaysiansydneyfood.databinding.CardItemBinding
 import com.androidcafe.malaysiansydneyfood.viewmodel.CardData
-import android.widget.Toast
-
-import android.R
-
-import android.content.ActivityNotFoundException
-import androidx.core.content.ContextCompat
-
-import androidx.core.content.ContextCompat.startActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleCoroutineScope
-import androidx.lifecycle.lifecycleScope
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class CardItemViewHolder(private val binding: CardItemBinding, private val viewModel: SharedFragmentViewModel)
     : RecyclerView.ViewHolder(binding.root) {
@@ -36,7 +23,7 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
 
     fun onCardClick(cardData: CardData) {
 
-        val uri = Uri.parse(cardData.mapUrl);
+        val uri = Uri.parse(cardData.mapUrl)
         val intent = Intent(Intent.ACTION_VIEW, uri)
 
         // Note: intent.resolveActivity no longer works in Android 11 due to package visiblity
@@ -61,9 +48,8 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
 
     fun onFavoriteClick(cardData: CardData) {
 
-        GlobalScope.launch {
-            viewModel.update(cardData)
-            binding.cardData = cardData
-        }
+        cardData.favorite = !cardData.favorite!!
+        viewModel.update(cardData)
+        binding.cardData = cardData
     }
 }

@@ -12,13 +12,7 @@ data class CardData (
     var favorite : Boolean?,
 )
 
-fun CardData.asFoodEntity(toggleFavorite: Boolean = false): FoodEntity {
-
-    var modifiedFavorite = favorite
-
-    if(toggleFavorite) {
-        modifiedFavorite = favorite != true
-    }
+fun CardData.asFoodEntity(): FoodEntity {
 
     return FoodEntity(
         id = id,
@@ -27,6 +21,6 @@ fun CardData.asFoodEntity(toggleFavorite: Boolean = false): FoodEntity {
         description = description,
         imageUrl = imageUrl,
         mapUrl = mapUrl,
-        favorite = modifiedFavorite,
+        favorite = favorite,
     )
 }
