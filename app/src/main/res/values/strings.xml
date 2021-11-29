@@ -2,12 +2,14 @@
 <!DOCTYPE resources [
     <!ENTITY app_name "Malaysian Sydney Food">
     <!ENTITY all_fragment "All">
+    <!ENTITY favorite_fragment "Favorite">
     <!ENTITY search_result_fragment "Search Result">
     ]>
 
 <resources>
     <string name="app_name">&app_name;</string>
     <string name="main_fragment_label">&app_name;: &all_fragment;</string>
+    <string name="favorite_fragment_label">&app_name;: &favorite_fragment;</string>
     <string name="search_result_fragment_label">&search_result_fragment;</string>
     <string name="about_fragment_label">About</string>
     <string name="about_text">&app_name; v%s \n\nYou can provide your feedback to champdog@gmail.com</string>

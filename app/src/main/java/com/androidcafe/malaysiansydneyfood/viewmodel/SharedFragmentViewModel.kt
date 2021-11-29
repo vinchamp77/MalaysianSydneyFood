@@ -12,7 +12,13 @@ class SharedFragmentViewModel(
     private val app: Application,
     private val repository: FoodRepository) : AndroidViewModel(app) {
 
-    val allCardDataList: LiveData<List<CardData>> = Transformations.map(repository.foodEntityList) {
+    val allCardDataList: LiveData<List<CardData>> =
+        Transformations.map(repository.allFoodEntityList) {
+        it.asCardDataList()
+    }
+
+    val favCardDataList: LiveData<List<CardData>> =
+        Transformations.map(repository.favFoodEntityList) {
         it.asCardDataList()
     }
 
@@ -22,10 +28,6 @@ class SharedFragmentViewModel(
     private val _searchResultCardDataList = MutableLiveData<List<CardData>>()
     val searchResultCardDataList: LiveData<List<CardData>>
         get() = _searchResultCardDataList
-
-    private var _favoriteCardDataList: LiveData<List<CardData>>? = null
-    val favoriteCardDataList: LiveData<List<CardData>>?
-        get() = _favoriteCardDataList
 
     val aboutText: String by lazy {
         app.resources.getString(R.string.about_text, BuildConfig.VERSION_NAME)
@@ -70,13 +72,6 @@ class SharedFragmentViewModel(
             val foodEntityList = repository.getByTitle(searchTitle!!)
             val cardDataList = foodEntityList.asCardDataList()
             _searchResultCardDataList.postValue(cardDataList)
-        }
-    }
-
-    suspend fun refreshFavoriteData() {
-        val foodEntityListLiveData = repository.getByFavorite().asLiveData()
-        _favoriteCardDataList = Transformations.map(foodEntityListLiveData) {
-            it.asCardDataList()
         }
     }
 

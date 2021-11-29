@@ -1,23 +1,21 @@
 package com.androidcafe.malaysiansydneyfood.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
 
     private val binding : MainActivityBinding by lazy {
-        DataBindingUtil.setContentView<MainActivityBinding>(this, R.layout.main_activity)
+        DataBindingUtil.setContentView(this, R.layout.main_activity)
     }
 
     private val navController: NavController by lazy {

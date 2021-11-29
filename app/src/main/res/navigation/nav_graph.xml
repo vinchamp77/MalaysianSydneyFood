@@ -22,6 +22,12 @@
         tools:layout="@layout/search_result_fragment" />
 
     <fragment
+        android:id="@+id/favorite_fragment"
+        android:name="com.androidcafe.malaysiansydneyfood.ui.FavoriteFragment"
+        android:label="@string/favorite_fragment_label"
+        tools:layout="@layout/favorite_fragment"/>
+
+    <fragment
         android:id="@+id/about_fragment"
         android:name="com.androidcafe.malaysiansydneyfood.ui.AboutFragment"
         android:label="@string/about_fragment_label"
