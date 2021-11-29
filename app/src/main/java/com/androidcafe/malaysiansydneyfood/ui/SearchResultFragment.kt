@@ -20,10 +20,6 @@ class SearchResultFragment : Fragment() {
         SharedFragmentViewModelFactory(requireActivity().application, repository)
     }
 
-    //private val binding: SearchResultFragmentBinding by lazy {
-    //    SearchResultFragmentBinding.inflate(layoutInflater)
-    //}
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

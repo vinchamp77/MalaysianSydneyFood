@@ -21,9 +21,9 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
         binding.executePendingBindings()
     }
 
-    fun onCardClick(cardData: CardData) {
+    fun onCardClick() {
 
-        val uri = Uri.parse(cardData.mapUrl)
+        val uri = Uri.parse(_cardData.mapUrl)
         val intent = Intent(Intent.ACTION_VIEW, uri)
 
         // Note: intent.resolveActivity no longer works in Android 11 due to package visibility
@@ -46,14 +46,15 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
         }
     }
 
-    fun onFavoriteClick(cardData: CardData) {
+    fun onFavoriteClick() {
 
-        if (cardData.favorite == null) {
-            cardData.favorite = true
+        if (_cardData.favorite == null) {
+            _cardData.favorite = true
         } else {
-            cardData.favorite = !cardData.favorite!!
+            _cardData.favorite = !_cardData.favorite!!
         }
-        viewModel.update(cardData)
-        binding.cardData = cardData
+        viewModel.update(_cardData)
+        binding.cardData = _cardData
+        binding.executePendingBindings()
     }
 }

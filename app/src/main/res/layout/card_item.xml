@@ -24,18 +24,19 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/preview"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
-                android:contentDescription="Food Preview"
                 app:layout_constraintDimensionRatio="h,4:3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:imageUrl="@{cardData.imageUrl}"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                tools:srcCompat="@tools:sample/backgrounds/scenic"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/title"
@@ -91,7 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="?attr/selectableItemBackground"
-                android:onClick="@{() -> viewHolder.onCardClick(cardData)}"
+                android:onClick="@{() -> viewHolder.onCardClick()}"
                 app:layout_constraintBottom_toTopOf="@+id/favorite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -103,13 +104,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="10dp"
-                android:onClick="@{() -> viewHolder.onFavoriteClick(cardData)}"
+                android:onClick="@{() -> viewHolder.onFavoriteClick()}"
                 app:srcCompat="@{cardData.favorite}"
                 app:layout_constraintTop_toBottomOf="@+id/description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:srcCompat="@drawable/ic_favorite_unselected"
-                />
+                tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
