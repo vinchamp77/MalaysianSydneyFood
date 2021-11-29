@@ -32,7 +32,14 @@ class MainFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = CardRecycleViewAdapter(viewModel)
+
+        val adapter = CardRecycleViewAdapter(viewModel)
+        binding.recyclerView.adapter = adapter
+
+        /* Note: already handled by bindRecyclerView() binding adapter
+        viewModel.allCardDataList.observe(viewLifecycleOwner, { cardDataList ->
+            adapter.submitList(cardDataList)
+        })*/
 
         setHasOptionsMenu(true)
 
@@ -49,7 +56,7 @@ class MainFragment : Fragment() {
             setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
 
-                    viewModel.setSearchTitle(query)
+                    viewModel.setSearchInfo(query, false)
 
                     findNavController().navigate(R.id.action_main_fragment_to_search_result_fragment)
 

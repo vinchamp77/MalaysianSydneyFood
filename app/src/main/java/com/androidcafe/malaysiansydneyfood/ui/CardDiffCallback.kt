@@ -9,6 +9,6 @@ object CardDiffCallback : DiffUtil.ItemCallback<CardData>() {
     }
 
     override fun areContentsTheSame(oldItem: CardData, newItem: CardData): Boolean {
-        return oldItem.id == newItem.id
+        return (oldItem == newItem)
     }
 }

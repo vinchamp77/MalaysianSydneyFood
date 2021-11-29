@@ -17,11 +17,14 @@ class FoodRepository (private val dao: IFoodDao) {
         }
     }
 
+    suspend fun getByTitleFavoriteFood(title: String): List<FoodEntity> {
+        return withContext(Dispatchers.IO) {
+            dao.getByTitleFavoriteFood(title)
+        }
+    }
+
     suspend fun update(foodEntity: FoodEntity) {
         return withContext(Dispatchers.IO) {
-            //Log.d("VTSEN", "I'm working in thread ${Thread.currentThread().name}")
-            //delay(3000)
-            //return@withContext dao.getAll()
             dao.update(foodEntity)
         }
     }

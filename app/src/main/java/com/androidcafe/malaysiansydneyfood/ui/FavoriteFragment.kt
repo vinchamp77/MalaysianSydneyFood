@@ -1,11 +1,12 @@
 package com.androidcafe.malaysiansydneyfood.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.databinding.FavoriteFragmentBinding
 import com.androidcafe.malaysiansydneyfood.local.FoodDatabase
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
@@ -38,28 +39,28 @@ class FavoriteFragment : Fragment() {
     }
 
     /* Search favorite functionality to be implemented later if needed*/
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//
-//        inflater.inflate(R.menu.main_fragment_search_menu, menu)
-//
-//        (menu.findItem(R.id.action_search).actionView as SearchView).apply {
-//
-//            queryHint = "Type here to search"
-//            setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-//                override fun onQueryTextSubmit(query: String?): Boolean {
-//
-//                    viewModel.setSearchTitle(query)
-//
-//                    findNavController().navigate(R.id.action_main_fragment_to_search_result_fragment)
-//
-//                    return false
-//                }
-//
-//                override fun onQueryTextChange(newText: String?): Boolean {
-//                    return false
-//                }
-//
-//            })
-//        }
-//    }
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+
+        inflater.inflate(R.menu.main_fragment_search_menu, menu)
+
+        (menu.findItem(R.id.action_search).actionView as SearchView).apply {
+
+            queryHint = "Type here to search"
+            setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+
+                    viewModel.setSearchInfo(query, true)
+
+                    findNavController().navigate(R.id.action_favorite_fragment_to_search_result_fragment)
+
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return false
+                }
+
+            })
+        }
+    }
 }

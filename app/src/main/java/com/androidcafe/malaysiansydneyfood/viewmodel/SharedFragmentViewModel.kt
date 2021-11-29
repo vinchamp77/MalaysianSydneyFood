@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.androidcafe.malaysiansydneyfood.BuildConfig
 import com.androidcafe.malaysiansydneyfood.R
+import com.androidcafe.malaysiansydneyfood.local.FoodEntity
 import com.androidcafe.malaysiansydneyfood.local.asCardDataList
 import com.androidcafe.malaysiansydneyfood.repository.FoodRepository
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ class SharedFragmentViewModel(
     }
 
     private var _searchTitle: String? = null
-    val searchTitle: String? get() = _searchTitle
+    private var _searchFavorite = false
 
     private val _searchResultCardDataList = MutableLiveData<List<CardData>>()
     val searchResultCardDataList: LiveData<List<CardData>>
@@ -43,9 +44,9 @@ class SharedFragmentViewModel(
 
     private fun setupMockUpData(searchResult: Boolean) {
 
-        val _cardDataListLiveData = MutableLiveData<List<CardData>>()
+        val cardDataListLiveData = MutableLiveData<List<CardData>>()
 
-        _cardDataListLiveData.value = mutableListOf(
+        cardDataListLiveData.value = mutableListOf(
             CardData(
                 0,
                 "Mamak",
@@ -57,19 +58,26 @@ class SharedFragmentViewModel(
             ),
         )
         if(searchResult) {
-            _searchResultCardDataList.value = _cardDataListLiveData.value
+            _searchResultCardDataList.value = cardDataListLiveData.value
         } else {
-            _mockAllCardDataList = _cardDataListLiveData
+            _mockAllCardDataList = cardDataListLiveData
         }
     }
 
-    fun setSearchTitle(title: String?) {
+    fun setSearchInfo(title: String?, favorite:Boolean) {
         _searchTitle = title
+        _searchFavorite = favorite
     }
 
     fun refreshSearchResultData() {
         viewModelScope.launch {
-            val foodEntityList = repository.getByTitle(searchTitle!!)
+            lateinit var foodEntityList : List<FoodEntity>
+
+            if (_searchFavorite) {
+                foodEntityList = repository.getByTitleFavoriteFood(_searchTitle!!)
+            } else {
+                foodEntityList = repository.getByTitle(_searchTitle!!)
+            }
             val cardDataList = foodEntityList.asCardDataList()
             _searchResultCardDataList.postValue(cardDataList)
         }

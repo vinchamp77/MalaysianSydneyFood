@@ -25,7 +25,11 @@
         android:id="@+id/favorite_fragment"
         android:name="com.androidcafe.malaysiansydneyfood.ui.FavoriteFragment"
         android:label="@string/favorite_fragment_label"
-        tools:layout="@layout/favorite_fragment"/>
+        tools:layout="@layout/favorite_fragment">
+        <action
+            android:id="@+id/action_favorite_fragment_to_search_result_fragment"
+            app:destination="@id/search_result_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/about_fragment"
