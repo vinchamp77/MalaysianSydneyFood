@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE resources [
     <!ENTITY app_name "Malaysian Sydney Food">
+    <!ENTITY author_name "ChampDog">
     <!ENTITY all_fragment "All">
     <!ENTITY favorite_fragment "Favorite">
     <!ENTITY search_result_fragment "Search Result">
@@ -12,5 +13,9 @@
     <string name="favorite_fragment_label">&app_name;: &favorite_fragment;</string>
     <string name="search_result_fragment_label">&search_result_fragment;</string>
     <string name="about_fragment_label">About</string>
-    <string name="about_text">&app_name; v%s \n\nYou can provide your feedback to champdog@gmail.com</string>
+    <string name="version_text">Version %s</string>
+    <string name="website_button_text">Website</string>
+    <string name="website_url">https://vtsen.hashnode.dev/</string>
+    <string name="no_web_browser_found_msg">"Please install Web Browser!"</string>
+    <string name="developed_by_text">Developed by <a href="https://play.google.com/store/apps/developer?id=ChampDog">&author_name;</a></string>
 </resources>

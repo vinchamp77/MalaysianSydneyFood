@@ -30,8 +30,8 @@ class SharedFragmentViewModel(
     val searchResultCardDataList: LiveData<List<CardData>>
         get() = _searchResultCardDataList
 
-    val aboutText: String by lazy {
-        app.resources.getString(R.string.about_text, BuildConfig.VERSION_NAME)
+    val versionText: String by lazy {
+        app.resources.getString(R.string.version_text, BuildConfig.VERSION_NAME)
     }
 
     private val debug = false

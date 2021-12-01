@@ -23,11 +23,13 @@ fun bindImageUrl(imageView: ImageView, url: String) {
             "https://lh3.googleusercontent.com/p/AF1QipM_YYPB3qJF88PYe8tVaUx91WzTv-AYBBc3o7L8"
         Glide.with(imageView.context)
             .load(debugUrl)
+            .placeholder(R.drawable.loading_animation)
             .error(R.drawable.error_loading)
             .into(imageView)
     } else {
         Glide.with(imageView.context)
             .load(url)
+            .placeholder(R.drawable.loading_animation)
             .error(R.drawable.error_loading)
             .into(imageView)
     }
