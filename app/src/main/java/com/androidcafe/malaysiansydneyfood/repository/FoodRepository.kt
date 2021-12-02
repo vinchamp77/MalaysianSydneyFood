@@ -13,13 +13,13 @@ class FoodRepository (private val dao: IFoodDao) {
 
     suspend fun getByTitle(title: String): List<FoodEntity> {
         return withContext(Dispatchers.IO) {
-            dao.getByTitle(title)
+            dao.getByTitle("%$title%")
         }
     }
 
     suspend fun getByTitleFavoriteFood(title: String): List<FoodEntity> {
         return withContext(Dispatchers.IO) {
-            dao.getByTitleFavoriteFood(title)
+            dao.getByTitleFavoriteFood("%$title%")
         }
     }
 

@@ -26,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:menu="@menu/main_fragment_nav_drawer_menu" />
+            app:menu="@menu/main_fragment_nav_drawer_menu"
+            app:itemTextAppearance="@style/TextAppearance.AppCompat.Headline" />
         <!--app:headerLayout="@layout/nav_header"-->
 
     </androidx.drawerlayout.widget.DrawerLayout>
