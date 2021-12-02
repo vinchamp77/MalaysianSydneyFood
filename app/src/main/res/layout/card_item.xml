@@ -40,6 +40,7 @@
 
             <TextView
                 android:id="@+id/title"
+                style="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -47,7 +48,6 @@
                 android:text="@{cardData.title}"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
-                android:textColor="#ff222222"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +56,7 @@
 
             <TextView
                 android:id="@+id/rating"
+                style="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
@@ -63,7 +64,6 @@
                 android:text="@{`Rating: ` + cardData.rating}"
                 android:textAlignment="viewEnd"
                 android:textAllCaps="false"
-                android:textColor="#ff222222"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,13 +75,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
                 android:layout_marginEnd="12dp"
                 android:text="@{cardData.description}"
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
-                android:textColor="#ff666666"
-                android:textSize="14sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/favorite"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title"
@@ -100,17 +99,17 @@
 
             <ImageView
                 android:id="@+id/favorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginBottom="10dp"
                 android:onClick="@{() -> viewHolder.onFavoriteClick()}"
-                app:srcCompat="@{cardData.favorite}"
-                app:layout_constraintTop_toBottomOf="@+id/description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:srcCompat="@drawable/ic_favorite_unselected"
-                tools:ignore="ContentDescription" />
+                app:layout_constraintTop_toBottomOf="@+id/description"
+                app:srcCompat="@{cardData.favorite}"
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@drawable/ic_favorite_unselected" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
