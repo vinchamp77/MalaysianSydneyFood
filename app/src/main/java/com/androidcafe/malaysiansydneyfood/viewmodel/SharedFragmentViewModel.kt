@@ -1,6 +1,7 @@
 package com.androidcafe.malaysiansydneyfood.viewmodel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.*
 import com.androidcafe.malaysiansydneyfood.BuildConfig
 import com.androidcafe.malaysiansydneyfood.R
@@ -12,6 +13,10 @@ import kotlinx.coroutines.launch
 class SharedFragmentViewModel(
     private val app: Application,
     private val repository: FoodRepository) : AndroidViewModel(app) {
+
+    companion object {
+        private const val SHARED_PREF_SAVED_FAV_FOOD_IDS_KEY = "savedFavFoodIds"
+    }
 
     val allCardDataList: LiveData<List<CardData>> =
         Transformations.map(repository.allFoodEntityList) {
@@ -25,7 +30,6 @@ class SharedFragmentViewModel(
 
     private var _searchTitle: String? = null
     private var _searchFavorite = false
-
     private val _searchResultCardDataList = MutableLiveData<List<CardData>>()
     val searchResultCardDataList: LiveData<List<CardData>>
         get() = _searchResultCardDataList
@@ -34,12 +38,20 @@ class SharedFragmentViewModel(
         app.resources.getString(R.string.version_text, BuildConfig.VERSION_NAME)
     }
 
+    private val sharedPrefs by lazy {
+        app.getSharedPreferences("SharedFragmentViewModel", Context.MODE_PRIVATE)
+    }
+    private val savedFavoriteFoodIds by lazy {
+        sharedPrefs.getStringSet(SHARED_PREF_SAVED_FAV_FOOD_IDS_KEY, mutableSetOf<String>())
+    }
+
     private val debug = false
     private var _mockAllCardDataList: LiveData<List<CardData>>? = null
     val mockAllCardDataList: LiveData<List<CardData>>? get() = _mockAllCardDataList
 
     init {
         if (debug) setupMockUpData(false)
+        refreshFavoriteData()
     }
 
     private fun setupMockUpData(searchResult: Boolean) {
@@ -64,6 +76,18 @@ class SharedFragmentViewModel(
         }
     }
 
+    private fun refreshFavoriteData() {
+        viewModelScope.launch {
+            for(id in savedFavoriteFoodIds!!) {
+                val foodEntity = repository.getById(id.toInt())
+                foodEntity?.run {
+                    favorite = true
+                    repository.update(this)
+                }
+            }
+        }
+    }
+
     fun setSearchInfo(title: String?, favorite:Boolean) {
         _searchTitle = title
         _searchFavorite = favorite
@@ -85,8 +109,22 @@ class SharedFragmentViewModel(
 
     fun update(cardData: CardData) {
         viewModelScope.launch {
+            if(cardData.favorite == true) {
+                savedFavoriteFoodIds!!.add(cardData.id.toString())
+            } else {
+                savedFavoriteFoodIds!!.remove(cardData.id.toString())
+            }
+
+            saveFavoriteFoodSharedPrefs()
+
             val foodEntity = cardData.asFoodEntity()
             repository.update(foodEntity)
         }
+    }
+
+    private fun saveFavoriteFoodSharedPrefs() {
+        val editor = sharedPrefs.edit()
+        editor.putStringSet(SHARED_PREF_SAVED_FAV_FOOD_IDS_KEY, savedFavoriteFoodIds)
+        editor.apply()
     }
 }

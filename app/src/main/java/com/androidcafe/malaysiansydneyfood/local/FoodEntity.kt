@@ -12,7 +12,7 @@ data class FoodEntity (
     val description : String,
     val imageUrl : String,
     val mapUrl : String,
-    val favorite : Boolean?
+    var favorite : Boolean?
 )
 
 fun List<FoodEntity>.asCardDataList(): List<CardData> {

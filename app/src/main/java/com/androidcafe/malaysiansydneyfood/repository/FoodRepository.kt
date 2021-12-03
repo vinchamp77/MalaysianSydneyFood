@@ -23,6 +23,12 @@ class FoodRepository (private val dao: IFoodDao) {
         }
     }
 
+    suspend fun getById(id: Int): FoodEntity? {
+        return withContext(Dispatchers.IO) {
+            dao.getById(id)
+        }
+    }
+
     suspend fun update(foodEntity: FoodEntity) {
         return withContext(Dispatchers.IO) {
             dao.update(foodEntity)

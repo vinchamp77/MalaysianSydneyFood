@@ -19,6 +19,9 @@ interface IFoodDao {
     @Query("SELECT * FROM food WHERE favorite = 1")
     fun getByFavorite(): Flow<List<FoodEntity>>
 
+    @Query("SELECT * FROM food WHERE id = :id")
+    fun getById(id: Int): FoodEntity?
+
     @Update
     fun update(vararg foodEntities:FoodEntity)
 }

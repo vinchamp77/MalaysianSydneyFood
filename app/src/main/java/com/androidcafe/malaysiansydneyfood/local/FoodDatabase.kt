@@ -26,11 +26,10 @@ abstract class FoodDatabase : RoomDatabase() {
                         FoodDatabase::class.java,
                         "food_internal.db") // name needs to be different than food.db
                             .createFromAsset("database/food.db")
-                            //commented out because it overwrites the previous saved data
-                            //.fallbackToDestructiveMigration()
+                            .fallbackToDestructiveMigration()
                             .build()
-
                 }
+
                 return INSTANCE
             }
         }
