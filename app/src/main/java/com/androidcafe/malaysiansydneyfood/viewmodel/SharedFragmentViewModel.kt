@@ -108,15 +108,15 @@ class SharedFragmentViewModel(
     }
 
     fun update(cardData: CardData) {
+        if(cardData.favorite == true) {
+            savedFavoriteFoodIds!!.add(cardData.id.toString())
+        } else {
+            savedFavoriteFoodIds!!.remove(cardData.id.toString())
+        }
+
+        saveFavoriteFoodSharedPrefs()
+
         viewModelScope.launch {
-            if(cardData.favorite == true) {
-                savedFavoriteFoodIds!!.add(cardData.id.toString())
-            } else {
-                savedFavoriteFoodIds!!.remove(cardData.id.toString())
-            }
-
-            saveFavoriteFoodSharedPrefs()
-
             val foodEntity = cardData.asFoodEntity()
             repository.update(foodEntity)
         }
@@ -124,6 +124,8 @@ class SharedFragmentViewModel(
 
     private fun saveFavoriteFoodSharedPrefs() {
         val editor = sharedPrefs.edit()
+        //clear() is required else the second saved string won't work
+        editor.clear()
         editor.putStringSet(SHARED_PREF_SAVED_FAV_FOOD_IDS_KEY, savedFavoriteFoodIds)
         editor.apply()
     }
