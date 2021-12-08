@@ -55,6 +55,5 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
         }
         viewModel.update(_cardData)
         binding.cardData = _cardData
-        //binding.executePendingBindings()
     }
 }

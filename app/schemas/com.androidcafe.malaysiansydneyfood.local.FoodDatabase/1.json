@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "de2e8ae84d9e14dd72614e4feec57f9e",
+    "identityHash": "9039ef37b2b70553681b58d83a875b9c",
     "entities": [
       {
         "tableName": "food",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `rating` REAL NOT NULL, `description` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `mapUrl` TEXT NOT NULL, `favorite` INTEGER, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `title` TEXT NOT NULL, `rating` REAL NOT NULL, `description` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `mapUrl` TEXT NOT NULL, `suburb` TEXT NOT NULL, `favorite` INTEGER, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -45,6 +45,12 @@
             "notNull": true
           },
           {
+            "fieldPath": "suburb",
+            "columnName": "suburb",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "favorite",
             "columnName": "favorite",
             "affinity": "INTEGER",
@@ -64,7 +70,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'de2e8ae84d9e14dd72614e4feec57f9e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9039ef37b2b70553681b58d83a875b9c')"
     ]
   }
 }

@@ -9,6 +9,7 @@ data class CardData (
     val description : String,
     val imageUrl : String,
     val mapUrl : String,
+    val suburb : String,
     var favorite : Boolean?,
 )
 
@@ -21,6 +22,7 @@ fun CardData.asFoodEntity(): FoodEntity {
         description = description,
         imageUrl = imageUrl,
         mapUrl = mapUrl,
+        suburb = suburb,
         favorite = favorite,
     )
 }

@@ -66,6 +66,7 @@ class SharedFragmentViewModel(
                 "Buzzing Malaysian restaurant serving satay, noodles and desserts like sweet roti at shared tables.",
                 "https://mamak.com.au/images/content/_max/haymarket-shop.jpg",
                 "https://goo.gl/maps/RJDrEzw4agb9bGkE7",
+                "Chatswood",
                 false,
             ),
         )
