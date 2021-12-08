@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/main_fragment"
-        android:title="All" />
-    <item
-        android:id="@+id/favorite_fragment"
-        android:title="Favorite" />
-    <item
-        android:id="@+id/about_fragment"
-        android:title="About" />
+    <group android:id="@+id/main_group">
+        <item
+            android:id="@+id/main_fragment"
+            android:title="@string/menu_item_all" />
+        <item
+            android:id="@+id/favorite_fragment"
+            android:title="@string/menu_item_favorite" />
+    </group>
+    <group android:id="@+id/about_group">
+        <item
+            android:id="@+id/about_fragment"
+            android:title="@string/menu_item_about" />
+    </group>
 </menu>

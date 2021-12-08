@@ -28,7 +28,7 @@ class SharedFragmentViewModel(
         it.asCardDataList()
     }
 
-    private var _searchTitle: String? = null
+    private var _searchQuery: String? = null
     private var _searchFavorite = false
     private val _searchResultCardDataList = MutableLiveData<List<CardData>>()
     val searchResultCardDataList: LiveData<List<CardData>>
@@ -89,8 +89,8 @@ class SharedFragmentViewModel(
         }
     }
 
-    fun setSearchInfo(title: String?, favorite:Boolean) {
-        _searchTitle = title
+    fun setSearchInfo(query: String?, favorite:Boolean) {
+        _searchQuery = query
         _searchFavorite = favorite
     }
 
@@ -99,9 +99,9 @@ class SharedFragmentViewModel(
             lateinit var foodEntityList : List<FoodEntity>
 
             if (_searchFavorite) {
-                foodEntityList = repository.getByTitleFavoriteFood(_searchTitle!!)
+                foodEntityList = repository.getBySearchQueryFavoriteFood(_searchQuery!!)
             } else {
-                foodEntityList = repository.getByTitle(_searchTitle!!)
+                foodEntityList = repository.getBySearchQueryAllFood(_searchQuery!!)
             }
             val cardDataList = foodEntityList.asCardDataList()
             _searchResultCardDataList.postValue(cardDataList)

@@ -52,7 +52,8 @@ class MainFragment : Fragment() {
 
         (menu.findItem(R.id.action_search).actionView as SearchView).apply {
 
-            queryHint = "Type here to search"
+            queryHint = getString(R.string.search_query_hint)
+
             setOnQueryTextListener(object: SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
 

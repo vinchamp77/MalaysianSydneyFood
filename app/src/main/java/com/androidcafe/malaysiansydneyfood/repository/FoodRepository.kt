@@ -11,15 +11,15 @@ class FoodRepository (private val dao: IFoodDao) {
     val allFoodEntityList = dao.getAll().asLiveData()
     val favFoodEntityList = dao.getByFavorite().asLiveData()
 
-    suspend fun getByTitle(title: String): List<FoodEntity> {
+    suspend fun getBySearchQueryAllFood(query: String): List<FoodEntity> {
         return withContext(Dispatchers.IO) {
-            dao.getByTitle("%$title%")
+            dao.getBySearchQueryAllFood("%$query%")
         }
     }
 
-    suspend fun getByTitleFavoriteFood(title: String): List<FoodEntity> {
+    suspend fun getBySearchQueryFavoriteFood(query: String): List<FoodEntity> {
         return withContext(Dispatchers.IO) {
-            dao.getByTitleFavoriteFood("%$title%")
+            dao.getBySearchQueryFavoriteFood("%$query%")
         }
     }
 

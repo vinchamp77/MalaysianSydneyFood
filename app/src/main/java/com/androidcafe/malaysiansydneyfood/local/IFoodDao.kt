@@ -10,11 +10,11 @@ interface IFoodDao {
     @Query("SELECT * FROM food ORDER BY rating DESC")
     fun getAll(): Flow<List<FoodEntity>>
 
-    @Query("SELECT * FROM food WHERE title LIKE :titleToQuery ORDER BY rating DESC")
-    fun getByTitle(titleToQuery: String): List<FoodEntity>
+    @Query("SELECT * FROM food WHERE title LIKE :query OR suburb LIKE :query ORDER BY rating DESC")
+    fun getBySearchQueryAllFood(query: String): List<FoodEntity>
 
-    @Query("SELECT * FROM food WHERE title LIKE :titleToQuery AND favorite = 1 ORDER BY rating DESC")
-    fun getByTitleFavoriteFood(titleToQuery: String): List<FoodEntity>
+    @Query("SELECT * FROM food WHERE (title LIKE :query OR suburb LIKE :query) AND favorite = 1 ORDER BY rating DESC")
+    fun getBySearchQueryFavoriteFood(query: String): List<FoodEntity>
 
     @Query("SELECT * FROM food WHERE favorite = 1 ORDER BY rating DESC")
     fun getByFavorite(): Flow<List<FoodEntity>>

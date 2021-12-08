@@ -44,7 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
                 android:text="@{cardData.title}"
                 android:textAlignment="viewStart"
@@ -60,21 +60,22 @@
                 style="@style/TextAppearance.AppCompat.Large"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="4dp"
-                android:layout_marginTop="16dp"
                 android:text="@{`Rating: ` + cardData.rating}"
                 android:textAlignment="viewEnd"
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/preview"
-                tools:text="Rating: 4.5"/>
+                tools:text="Rating: 4.5" />
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="12dp"
                 android:text="@{cardData.description}"
                 android:textAlignment="viewStart"
@@ -96,6 +97,22 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/suburb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:text="@{cardData.suburb}"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/description"
+                tools:text="Chatswood" />
 
             <ImageView
                 android:id="@+id/favorite"
