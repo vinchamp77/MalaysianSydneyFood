@@ -5,6 +5,7 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.databinding.MainFragmentBinding
@@ -23,6 +24,10 @@ class MainFragment : Fragment() {
         SharedFragmentViewModelFactory(requireActivity().application, repository)
     }
 
+    private val navController: NavController by lazy {
+        findNavController()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +38,7 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val adapter = CardRecycleViewAdapter(viewModel)
+        val adapter = CardRecycleViewAdapter(viewModel, navController)
         binding.recyclerView.adapter = adapter
 
         /* Note: already handled by bindRecyclerView() binding adapter
@@ -59,7 +64,7 @@ class MainFragment : Fragment() {
 
                     viewModel.setSearchInfo(query, false)
 
-                    findNavController().navigate(R.id.action_main_fragment_to_search_result_fragment)
+                    navController.navigate(R.id.action_main_fragment_to_search_result_fragment)
 
                     return false
                 }

@@ -108,8 +108,9 @@
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
+                android:onClick="@{() -> viewHolder.onSuburbClick()}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/description"
                 tools:text="Chatswood" />

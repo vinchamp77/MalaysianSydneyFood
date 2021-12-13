@@ -29,7 +29,7 @@ class SearchResultFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = CardRecycleViewAdapter(viewModel)
+        binding.recyclerView.adapter = CardRecycleViewAdapter(viewModel, null)
 
         viewModel.refreshSearchResultData()
 

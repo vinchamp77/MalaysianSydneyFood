@@ -3,14 +3,19 @@ package com.androidcafe.malaysiansydneyfood.ui
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.databinding.CardItemBinding
 import com.androidcafe.malaysiansydneyfood.viewmodel.CardData
 import com.androidcafe.malaysiansydneyfood.viewmodel.SharedFragmentViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class CardItemViewHolder(private val binding: CardItemBinding, private val viewModel: SharedFragmentViewModel)
-    : RecyclerView.ViewHolder(binding.root) {
+class CardItemViewHolder(
+    private val binding: CardItemBinding,
+    private val viewModel: SharedFragmentViewModel,
+    private val navController: NavController?
+) : RecyclerView.ViewHolder(binding.root) {
 
     private lateinit var _cardData: CardData
 
@@ -55,5 +60,12 @@ class CardItemViewHolder(private val binding: CardItemBinding, private val viewM
         }
         viewModel.update(_cardData)
         binding.cardData = _cardData
+    }
+
+    fun onSuburbClick() {
+        navController?.run {
+            viewModel.setSearchInfo(_cardData.suburb, false)
+            this.navigate(R.id.action_main_fragment_to_search_result_fragment)
+        }
     }
 }

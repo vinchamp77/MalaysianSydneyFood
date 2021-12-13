@@ -5,6 +5,7 @@ import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.androidcafe.malaysiansydneyfood.R
 import com.androidcafe.malaysiansydneyfood.databinding.FavoriteFragmentBinding
@@ -22,6 +23,10 @@ class FavoriteFragment : Fragment() {
         SharedFragmentViewModelFactory(requireActivity().application, repository)
     }
 
+    private val navController: NavController by lazy {
+        findNavController()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +36,7 @@ class FavoriteFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        binding.recyclerView.adapter = CardRecycleViewAdapter(viewModel)
+        binding.recyclerView.adapter = CardRecycleViewAdapter(viewModel, null)
 
         setHasOptionsMenu(true)
 
@@ -51,7 +56,7 @@ class FavoriteFragment : Fragment() {
 
                     viewModel.setSearchInfo(query, true)
 
-                    findNavController().navigate(R.id.action_favorite_fragment_to_search_result_fragment)
+                    navController.navigate(R.id.action_favorite_fragment_to_search_result_fragment)
 
                     return false
                 }
