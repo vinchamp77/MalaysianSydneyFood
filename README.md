@@ -1,1 +1,3 @@
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1639532965801/NAQbrDcR0.gif)
+![](app/src/main/malaysian_sydney_food_app.gif)
+
+For details, refer to my [Android projects page](https://vtsen.hashnode.dev/projects).
