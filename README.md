@@ -1,6 +1,9 @@
 # Malaysian Syndey Food App
 ![](app/src/main/malaysian_sydney_food_app.gif)
 
+## Requirements
+- Android Studio Bumblebee
+
 ## Tech Stack
 - View Model
 - Recycle View
