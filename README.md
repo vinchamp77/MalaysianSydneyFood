@@ -1,1 +1,15 @@
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1639532965801/NAQbrDcR0.gif)
+# Malaysian Syndey Food App
+![](app/src/main/malaysian_sydney_food_app.gif)
+
+## Requirements
+- Android Studio Bumblebee
+
+## Tech Stack
+- View Model
+- Recycle View
+- Room Database / SQLite
+- Material Card View
+- Glide
+
+## See Also
+For other projects, refer to my [Android projects page](https://vtsen.hashnode.dev/projects).
