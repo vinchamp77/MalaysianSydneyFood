@@ -2,7 +2,7 @@
 ![](app/src/main/malaysian_sydney_food_app.gif)
 
 ## Requirements
-- Android Studio Bumblebee
+- Android Studio Bumblebee or later
 
 ## Tech Stack
 - View Model
