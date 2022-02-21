@@ -10,6 +10,7 @@
 - Room Database / SQLite
 - Material Card View
 - Glide
+- Shared Preferences
 
 ## See Also
 For other projects, refer to my [Android projects page](https://vtsen.hashnode.dev/projects).
