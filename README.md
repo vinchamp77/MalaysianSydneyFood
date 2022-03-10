@@ -5,15 +5,12 @@
 - Android Studio Bumblebee or later
 
 ## Tech Stack
-- MVVM Architecture
-- Jetpack Compose
-- Ktor Client
-- Room Database
-- Coil
-- XmlPullParser
-- Compose Navigation
-- Webview
-- Kotlin Coroutines & Flow
+- View Model
+- Recycle View
+- Room Database / SQLite
+- Material Card View
+- Glide
+- Shared Preferences
 
 ## See Also
 For other projects, refer to my [Android projects page](https://vtsen.hashnode.dev/projects).
