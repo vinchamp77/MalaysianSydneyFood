@@ -12,6 +12,3 @@
 - Glide
 - Shared Preferences
 - Coroutine & Live Data
-
-## See Also
-For other projects, refer to my [Android projects page](https://vtsen.hashnode.dev/projects).
