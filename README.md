@@ -5,11 +5,10 @@
 - Android Studio Bumblebee or later
 
 ## Tech Stack
-- View Model
-- Recycle View
+- [View Model](https://vtsen.hashnode.dev/recommended-ways-to-create-viewmodel-or-androidviewmodel)
+- [Recycle View](https://vtsen.hashnode.dev/step-by-step-guides-to-implement-recycleview)
 - Room Database / SQLite
 - Material Card View
 - Glide
-
-## See Also
-For other projects, refer to my [Android projects page](https://vtsen.hashnode.dev/projects).
+- Shared Preferences
+- Coroutine & Live Data
