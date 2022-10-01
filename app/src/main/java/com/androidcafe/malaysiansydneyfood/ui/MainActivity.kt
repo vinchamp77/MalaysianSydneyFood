@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         // prevent nav gesture if not on start destination
         navController.addOnDestinationChangedListener { nc: NavController, nd: NavDestination, bundle: Bundle? ->
-            if (nd.id == nc.graph.startDestination) {
+            if (nd.id == nc.graph.startDestinationId) {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             } else {
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
