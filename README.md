@@ -2,7 +2,7 @@
 ![](app/src/main/malaysian_sydney_food_app.gif)
 
 ## Requirements
-- Android Studio Bumblebee or later
+- Android Studio Dolphin or later
 
 ## Tech Stack
 - [View Model](https://vtsen.hashnode.dev/recommended-ways-to-create-viewmodel-or-androidviewmodel)
