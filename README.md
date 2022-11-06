@@ -5,6 +5,7 @@
 - Android Studio Dolphin or later
 
 ## Tech Stack
+- Android View
 - ViewModel
 - RecycleView
 - Room Database / SQLite
