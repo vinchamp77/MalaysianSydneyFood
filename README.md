@@ -6,7 +6,7 @@
 
 ## Tech Stack
 - Android View
-- ViewModel
+- MVVM Achitecture
 - RecycleView
 - Room Database / SQLite
 - Material Card View
